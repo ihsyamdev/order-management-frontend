@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import { Logo } from '@/components/atoms/Logo'
 import { Avatar } from '@/components/atoms/Avatar'
+import { Header } from '@/components/organisms/Header'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,14 +17,13 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
       <h3>
         Hello World Plain
       </h3>
       <h3 className="text-3xl font-bold underline">
         Hello World Decorated---
       </h3>
-      <Logo />
-      <Avatar />
     </>
   )
 }
