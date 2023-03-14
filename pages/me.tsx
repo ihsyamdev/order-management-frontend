@@ -11,8 +11,8 @@ export default function Home() {
         <title>Order Management Sample</title>
       </Head>
       <DefaultLayout>
-        <h1>this is home</h1>
-        <div className='font-bold'> this is home decorated</div>
+        <h1>this is me</h1>
+        <div className='font-bold'> this is me decorated</div>
       </DefaultLayout>
     </>
   )

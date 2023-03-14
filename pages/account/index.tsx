@@ -4,15 +4,15 @@ import { DefaultLayout } from '@/components/templates/DefaultLayout'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function Account() {
   return (
     <>
       <Head>
         <title>Order Management Sample</title>
       </Head>
       <DefaultLayout>
-        <h1>this is home</h1>
-        <div className='font-bold'> this is home decorated</div>
+        <h1>this is new account</h1>
+        <div className='font-bold'> this is new account decorated</div>
       </DefaultLayout>
     </>
   )
