@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { HeaderNavigation } from "../../molecules/HeaderNavigation"
+import { HeaderNavigation } from "@/components/molecules/HeaderNavigation"
 
 export const Header: FC = () => {
   return (
