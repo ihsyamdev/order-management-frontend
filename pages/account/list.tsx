@@ -16,9 +16,18 @@ const AccountList: React.FC = () => {
       const response = await fetch('http://localhost:3000/customer/search/' + accountName)
       const jsonData = await response.json()
       const mappedCustomers = jsonData.items.customers.map((customer: Customer) => {
+        const convertedDateTime = new Date(customer.updatedAt).toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit'})
         return {
           id: customer.id,
           name: customer.name,
+          billingState: customer.billingState,
+          billingCity: customer.billingCity,
+          billingStreet: customer.billingStreet,
+          shippingState: customer.shippingState,
+          shippingCity: customer.shippingCity,
+          shippingStreet: customer.shippingStreet,
+          phone: customer.phone,
+          updatedAt: convertedDateTime
         }})
       setCustomers(mappedCustomers)
     } catch (error) {
@@ -33,10 +42,10 @@ const AccountList: React.FC = () => {
   return (
     <>
     <Head>
-      <title>Order Management Sample</title>  
+      <title>取引先一覧</title>  
     </Head>
     <DefaultLayout>
-      <h1>取引先一覧</h1>
+      <h1 className="m-2 text-xl">取引先一覧</h1>
       <CustomerSearchForm onSearch={handleSearch} />
       <CustomerList customers={customers} />
     </DefaultLayout>

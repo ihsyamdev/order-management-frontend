@@ -8,7 +8,7 @@ export default function Account() {
   return (
     <>
       <Head>
-        <title>Order Management Sample</title>
+        <title>取引先新規登録</title>
       </Head>
       <DefaultLayout>
         <h1>this is new account</h1>
