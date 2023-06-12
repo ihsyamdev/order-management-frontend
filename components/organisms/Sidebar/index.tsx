@@ -7,8 +7,9 @@ interface MenuItem {
 }
 
 interface SubMenuItem {
-  label: string;
-  link: string;
+  index: number
+  label: string
+  link: string
 }
 
 const items: MenuItem[] = [
@@ -16,10 +17,12 @@ const items: MenuItem[] = [
     label: '取引先',
     items: [
       {
+        index: 0,
         label: '取引先一覧',
         link: '/account/list'
       },
       {
+        index: 1,
         label: '新規登録',
         link: '/account'
       }
@@ -29,10 +32,12 @@ const items: MenuItem[] = [
     label: '商品',
     items: [
       {
+        index: 2,
         label: '商品一覧',
         link: '/product/list'
       },
       {
+        index: 3,
         label: '新規登録',
         link: '/product'
       }
@@ -42,10 +47,12 @@ const items: MenuItem[] = [
     label: '受注',
     items: [
       {
+        index: 4,
         label: '受注一覧',
         link: '/order/list'
       },
       {
+        index: 5,
         label: '新規申請',
         link: '/order'
       }
@@ -77,7 +84,7 @@ export const Sidebar: FC = () => {
   };
 
   return (
-    <div className="bg-black text-white w-40">
+    <div className="bg-black text-white w-40 h-screen">
       {items.map(({ label, items }, index) => (
         <ToggleMenu
           key={label}
