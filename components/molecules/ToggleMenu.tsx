@@ -3,6 +3,7 @@ import { FC, useState, useEffect } from "react"
 type ToggleMenuProps = {
   label: string
   items?: {
+    index: number
     label: string
     link: string
   }[]
@@ -16,16 +17,26 @@ export const ToggleMenu: FC<ToggleMenuProps> = ({ label, items, isOpen, onToggle
     transition: "max-height 0.5s ease-in-out"
   }
 
+  const [hoveredIndex, setHoveredIndex] = useState(-1)
+
   return (
     <div>
       <div onClick={onToggle}>
         <span>{label}</span>
         {items && <span className="ml-auto ">{isOpen ? " -" : " +"}</span>}
-      </div>
+      </div >
       {isOpen && (
         <ul style={style}>
           {items?.map((item) => (
-            <li key={item.label} className="p-2">
+            // <li key={item.label} className="p-2">
+            //   <a href={item.link}>{item.label}</a>
+            // </li>
+            <li
+              key={item.label}
+              className={`p-2 text-white ${hoveredIndex === item.index? "bg-green-300" : ""}`}
+              onMouseEnter={() => setHoveredIndex(item.index)}
+              onMouseLeave={() => setHoveredIndex(-1)}
+            >
               <a href={item.link}>{item.label}</a>
             </li>
           ))}
