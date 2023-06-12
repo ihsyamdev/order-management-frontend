@@ -84,7 +84,7 @@ export const Sidebar: FC = () => {
   };
 
   return (
-    <div className="bg-black text-white w-40">
+    <div className="bg-black text-white w-40 h-screen">
       {items.map(({ label, items }, index) => (
         <ToggleMenu
           key={label}
