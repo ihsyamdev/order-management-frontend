@@ -1,5 +1,6 @@
 import React from 'react'
 import { Customer } from '../../../types'
+import Link from 'next/link'
 
 interface CustomerListProps {
   customers: Customer[]
@@ -21,7 +22,9 @@ const CustomerList: React.FC<CustomerListProps> = ({ customers }) => {
       <tbody>
         {customers.map((customer: Customer) => (
           <tr className="border" key={customer.id}>
-            <td className="border">{customer.id}</td>
+            <Link href={`/account/detail?id=${customer.id}`} as={`${customer.id}`}>
+              <td className="border">{customer.id}</td>
+            </Link>
             <td className="border">{customer.name}</td>
             <td className="border">{customer.billingState + customer.billingCity + customer.billingStreet}</td>
             <td className="border">{customer.shippingState + customer.shippingCity + customer.shippingStreet}</td>
