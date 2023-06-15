@@ -9,7 +9,7 @@ interface Props {
   initialCustomer: Customer | null;
 }
 
-const CustomerDetail: React.FC<Props> = ({ initialCustomer }) => {
+const CustomerEdit: React.FC<Props> = ({ initialCustomer }) => {
   const router = useRouter();
   const { id } = router.query;
 
@@ -19,7 +19,7 @@ const CustomerDetail: React.FC<Props> = ({ initialCustomer }) => {
     const fetchCustomer = async () => {
       try {
         const response = await fetch('http://localhost:3000/customer/' + id);
-        console.log('http://localhost:3000/customer/' + id);
+        console.log(`${process.env.API_URL}/customer/` + id);
         const data = await response.json();
         setCustomer(data.item.customer);
       } catch (error) {
@@ -28,7 +28,7 @@ const CustomerDetail: React.FC<Props> = ({ initialCustomer }) => {
     };
 
     if (id) {
-      const expectedUrl = `http://localhost:3001/account/detail?id=${id}`;
+      const expectedUrl = `http://localhost:3001/account/edit?id=${id}`;
       const currentUrl = window.location.href;
 
       if (currentUrl !== expectedUrl) {
@@ -40,6 +40,11 @@ const CustomerDetail: React.FC<Props> = ({ initialCustomer }) => {
       fetchCustomer();
     }
   }, [id, initialCustomer, router]);
+
+  const handleSave = async () => {
+    // TODO: エンドポイントが作成されたら実装する
+    console.log('保存は実行されました')
+  }
 
   return (
     <div>
@@ -55,49 +60,48 @@ const CustomerDetail: React.FC<Props> = ({ initialCustomer }) => {
         <form className="flex flex-col px-6">
         <div className="flex items-center pb-4">
           <label className="w-40 flex-shrink-0 "htmlFor="accountName">取引先名</label>
-          <input className="my-2 border flex-grow bg-gray-100" type="text" id="accountName" defaultValue={customer.name} />
+          <input className="my-2 border flex-grow" type="text" id="accountName" value={customer.name} />
         </div>
         <div className="flex items-center pb-4">
           <label className="w-40 flex-shrink-0" htmlFor="accountPhone">電話番号</label>
-          <input className="my-2 border flex-grow bg-gray-100" type="text" id="accountPhone" defaultValue={customer.phone} readOnly/>
+          <input className="my-2 border flex-grow" type="text" id="accountPhone" value={customer.phone}/>
         </div>
         <div className='flex items-center pb-4'>
           <label className="w-40 flex-shrink-0" htmlFor="accountBillingPostalCode">郵便番号(請求先)</label>
-          <input className="my-2 border flex-grow bg-gray-100" type="text" id="accountBillingPostalCode" defaultValue={customer.billingPostalCode} readOnly/>
+          <input className="my-2 border flex-grow" type="text" id="accountBillingPostalCode" value={customer.billingPostalCode}/>
         </div>
         <div className="flex items-center pb-4">
           <label className="w-40 flex-shrink-0" htmlFor="accountBillingState">都道府県(請求先)</label>
-          <input className="my-2 border flex-grow bg-gray-100" type="text" id="accountBillingState" defaultValue={customer.billingState} readOnly/>
+          <input className="my-2 border flex-grow" type="text" id="accountBillingState" value={customer.billingState}/>
         </div>
         <div className="flex items-center pb-4">
           <label className="w-40 flex-shrink-0" htmlFor="accountBillingCity">市区町村(請求先)</label>
-          <input className="my-2 border flex-grow bg-gray-100" type="text" id="accountBillingCity" defaultValue={customer.billingCity} readOnly/>
+          <input className="my-2 border flex-grow" type="text" id="accountBillingCity" value={customer.billingCity}/>
         </div>
         <div className="flex items-center pb-4">
           <label className="w-40 flex-shrink-0" htmlFor="accountBillingStreet">番地その他(請求先)</label>
-          <input className="my-2 border flex-grow bg-gray-100" type="text" id="accountBillingStreet" defaultValue={customer.billingStreet} readOnly/>
+          <input className="my-2 border flex-grow" type="text" id="accountBillingStreet" value={customer.billingStreet}/>
         </div>
         <div className="flex items-center pb-4">
           <label className="w-40 flex-shrink-0" htmlFor="accountShippingPostalCode">郵便番号(納品先)</label>
-          <input className="my-2 border flex-grow bg-gray-100" type="text" id="accountShippingPostalCode" defaultValue={customer.shippingPostalCode} readOnly/>
+          <input className="my-2 border flex-grow" type="text" id="accountShippingPostalCode" value={customer.shippingPostalCode}/>
         </div>
         <div className="flex items-center pb-4">
           <label className="w-40 flex-shrink-0" htmlFor="accountShippingState">都道府県(納品先)</label>
-          <input className="my-2 border flex-grow bg-gray-100" type="text" id="accountShippingState" defaultValue={customer.shippingState} readOnly/>
+          <input className="my-2 border flex-grow" type="text" id="accountShippingState" value={customer.shippingState}/>
         </div>
         <div className="flex items-center pb-4">
           <label className="w-40 flex-shrink-0" htmlFor="accountShippingCity">市区町村(納品先)</label>
-          <input className="my-2 border flex-grow bg-gray-100" type="text" id="accountShippingCity" defaultValue={customer.shippingCity} readOnly/>
+          <input className="my-2 border flex-grow" type="text" id="accountShippingCity" value={customer.shippingCity}/>
         </div>
         <div className="flex items-center pb-4">
           <label className="w-40 flex-shrink-0" htmlFor="accountShippingStreet">番地その他(納品先)</label>
-          <input className="my-2 border flex-grow bg-gray-100" type="text" id="accountShippingStreet" defaultValue={customer.shippingStreet} readOnly/>
+          <input className="my-2 border flex-grow" type="text" id="accountShippingStreet" value={customer.shippingStreet}/>
         </div>
       </form>
-
-      <Link href={`/account/edit?id=${id}`}>
-      {/* <Link href={`/account/list`}> */}
-        <button>編集</button>
+      <Link href={`/account/detail?id=${id}`}>
+        <button onClick={handleSave}>保存</button>
+        <button>キャンセル</button>
       </Link>
 
       </div>
@@ -109,4 +113,5 @@ const CustomerDetail: React.FC<Props> = ({ initialCustomer }) => {
   );
 };
 
-export default CustomerDetail;
+export default CustomerEdit;
+
