@@ -10,7 +10,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Access-Control-Allow-Origin',
-            value: 'http://localhost:3001', // フロントエンドのURLに置き換える
+            value: process.env.FRONT_URL, // フロントエンドのURLに置き換える
           },
         ],
       },
@@ -23,5 +23,6 @@ const nextConfig = {
 module.exports = {
   env: {
     API_URL: process.env.API_URL,
+    FRONT_URL: process.env.FRONT_URL,
   }
 }

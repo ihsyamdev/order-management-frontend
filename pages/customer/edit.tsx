@@ -18,7 +18,7 @@ const CustomerEdit: React.FC<Props> = ({ initialCustomer }) => {
   useEffect(() => {
     const fetchCustomer = async () => {
       try {
-        const response = await fetch('http://localhost:3000/customer/' + id);
+        const response = await fetch(`${process.env.API_URL}/customer/` + id);
         console.log(`${process.env.API_URL}/customer/` + id);
         const data = await response.json();
         setCustomer(data.item.customer);
@@ -28,7 +28,7 @@ const CustomerEdit: React.FC<Props> = ({ initialCustomer }) => {
     };
 
     if (id) {
-      const expectedUrl = `http://localhost:3001/customer/edit?id=${id}`;
+      const expectedUrl = `${process.env.FRONT_URL}/customer/edit?id=${id}`;
       const currentUrl = window.location.href;
 
       if (currentUrl !== expectedUrl) {
