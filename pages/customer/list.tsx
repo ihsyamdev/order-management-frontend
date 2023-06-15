@@ -3,12 +3,12 @@ import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import { DefaultLayout } from '@/components/templates/DefaultLayout'
 import CustomerSearchForm from '@/components/organisms/CustomerSearchForm'
-import CustomerList from '@/components/molecules/CustomerList'
+import CustomerTable from '@/components/molecules/CustomerTable'
 import { Customer } from '@/types'
 
 const inter = Inter({ subsets: ['latin'] })
 
-const AccountList: React.FC = () => {
+const CustomerList: React.FC = () => {
   const [customers, setCustomers] = useState<Customer[]>([])
 
   const fetchCustomers = async (accountName: string) => {
@@ -47,11 +47,11 @@ const AccountList: React.FC = () => {
     <DefaultLayout>
       <h1 className="m-2 text-xl">取引先一覧</h1>
       <CustomerSearchForm onSearch={handleSearch} />
-      <CustomerList customers={customers} />
+      <CustomerTable customers={customers} />
     </DefaultLayout>
     </>
   )
 
 }
 
-export default AccountList
+export default CustomerList

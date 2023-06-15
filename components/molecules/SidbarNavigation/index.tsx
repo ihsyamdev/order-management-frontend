@@ -9,10 +9,10 @@ export const SidebarNavigation: FC = () => {
           取引先
         </li>
         <li>
-          <NavigationLink href="/accountList">取引先一覧</NavigationLink>
+          <NavigationLink href="/customerList">取引先一覧</NavigationLink>
         </li>
         <li>
-          <NavigationLink href="accountNew">取引先新規登録</NavigationLink>
+          <NavigationLink href="customerNew">取引先新規登録</NavigationLink>
         </li>
         <li>
           商品

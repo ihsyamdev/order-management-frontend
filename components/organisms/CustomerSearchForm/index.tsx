@@ -19,7 +19,7 @@ const CustomerSearchForm: React.FC<CustomerSearchFormProps> = ({ onSearch }) => 
   return (
     <form onSubmit={handleSearchSubmit}>
       <input className="border-2 border-gray-500 rounded-md px-2 mx-5 w-60" type="text" value={searchQuery} onChange={handleSearchChange} placeholder="社名を入力してください" />
-      <button className="border-2 border-gray-300 rounded-md bg-green-100 px-2" type="submit">検索</button>
+      <button className="border-2 border-gray-300 rounded-md bg-blue-100 px-2" type="submit">検索</button>
     </form>
   )
 }

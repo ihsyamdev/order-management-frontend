@@ -6,23 +6,23 @@ interface CustomerListProps {
   customers: Customer[]
 }
 
-const CustomerList: React.FC<CustomerListProps> = ({ customers }) => {
+const CustomerTable: React.FC<CustomerListProps> = ({ customers }) => {
   return (
     <table className="mx-2 my-5">
-      <thead className="bg-green-900 text-white text-sm">
+      <thead className="bg-blue-700 text-white text-sm">
         <tr>
           <th className="w-36 border">ID</th>
-          <th className="w-36">取引先名</th>
-          <th className="w-48 border">請求先住所</th>
-          <th className="w-48 border">納品先住所</th>
-          <th className="w-24 border">電話番号</th>
-          <th className="w-36 border">最終更新日時</th>
+          <th className="w-48">取引先名</th>
+          <th className="w-60 border">請求先住所</th>
+          <th className="w-60 border">納品先住所</th>
+          <th className="w-36 border">電話番号</th>
+          <th className="w-36 border">最終更新</th>
         </tr>
       </thead>
       <tbody>
         {customers.map((customer: Customer) => (
-          <tr className="border" key={customer.id}>
-            <Link href={`/account/detail?id=${customer.id}`} as={`${customer.id}`}>
+          <tr className="border text-sm" key={customer.id}>
+            <Link href={`/customer/detail?id=${customer.id}`} as={`${customer.id}`}>
               <td className="border">{customer.id}</td>
             </Link>
             <td className="border">{customer.name}</td>
@@ -37,4 +37,4 @@ const CustomerList: React.FC<CustomerListProps> = ({ customers }) => {
   )
 }
 
-export default CustomerList
+export default CustomerTable

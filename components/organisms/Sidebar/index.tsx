@@ -19,12 +19,12 @@ const items: MenuItem[] = [
       {
         index: 0,
         label: '取引先一覧',
-        link: '/account/list'
+        link: '/customer/list'
       },
       {
         index: 1,
         label: '新規登録',
-        link: '/account'
+        link: '/customer'
       }
     ]
   },
@@ -84,7 +84,7 @@ export const Sidebar: FC = () => {
   };
 
   return (
-    <div className="bg-black text-white w-40 h-screen">
+    <div className="bg-gray-800 text-white w-40 h-screen">
       {items.map(({ label, items }, index) => (
         <ToggleMenu
           key={label}
