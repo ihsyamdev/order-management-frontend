@@ -13,7 +13,7 @@ const CustomerList: React.FC = () => {
 
   const fetchCustomers = async (accountName: string) => {
     try {
-      const response = await fetch('http://localhost:3000/customer/search/' + accountName)
+      const response = await fetch(`${process.env.API_URL}/customer/search/` + accountName)
       const jsonData = await response.json()
       const mappedCustomers = jsonData.items.customers.map((customer: Customer) => {
         const convertedDateTime = new Date(customer.updatedAt).toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit'})
