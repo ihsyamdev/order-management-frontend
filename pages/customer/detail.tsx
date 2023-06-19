@@ -6,7 +6,7 @@ import { Customer } from '@/types';
 import Link from 'next/link';
 
 interface Props {
-  initialCustomer: Customer | null;
+  initialCustomer: Customer
 }
 
 const CustomerDetail: React.FC<Props> = ({ initialCustomer }) => {
@@ -19,7 +19,6 @@ const CustomerDetail: React.FC<Props> = ({ initialCustomer }) => {
     const fetchCustomer = async () => {
       try {
         const response = await fetch(`${process.env.API_URL}/customer/` + id);
-        console.log(`${process.env.API_URL}/customer/` + id);
         const data = await response.json();
         setCustomer(data.item.customer);
       } catch (error) {
@@ -28,7 +27,7 @@ const CustomerDetail: React.FC<Props> = ({ initialCustomer }) => {
     };
 
     if (id) {
-      const expectedUrl = `${process.env.FRONT_URL}/customer/detail?id=${id}`;
+      const expectedUrl = `/customer/detail?id=${id}`;
       const currentUrl = window.location.href;
 
       if (currentUrl !== expectedUrl) {
@@ -39,7 +38,8 @@ const CustomerDetail: React.FC<Props> = ({ initialCustomer }) => {
     if (id && !initialCustomer) {
       fetchCustomer();
     }
-  }, [id, initialCustomer, router]);
+  // }, [id, initialCustomer, router]);
+    }, [id, initialCustomer]);
 
   return (
     <div>
@@ -55,7 +55,7 @@ const CustomerDetail: React.FC<Props> = ({ initialCustomer }) => {
         <Link href={`/customer/edit?id=${id}`}>
           <button className="border-2 border-gray-300 rounded-md bg-blue-100 px-2 ml-10">編集</button>
         </Link>
-        <form className="flex flex-col px-6">
+        <form id='customerForm' className="flex flex-col px-6">
         <div className="flex items-center pb-4">
           <label className="w-40 flex-shrink-0 "htmlFor="customerName">取引先名</label>
           <input className="my-2 border flex-grow bg-gray-100" type="text" id="customerName" defaultValue={customer.name} />

@@ -38,7 +38,7 @@ export default function Customer() {
       </Head>
       <DefaultLayout>
         <h1 className='p-6 text-xl font-bold'>新規取引先の登録</h1>
-        <form className="flex flex-col px-6" onSubmit={handleSubmit}>
+        <form id='customerForm' className="flex flex-col px-6" onSubmit={handleSubmit}>
           <div className="flex items-center pb-4">
             <label className="w-40 flex-shrink-0 "htmlFor="customerName">取引先名</label>
             <input className="my-2 border flex-grow" type="text" id="customerName" onBlur={handleInputBlur} />

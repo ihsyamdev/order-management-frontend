@@ -28,7 +28,7 @@ const CustomerEdit: React.FC<Props> = ({ initialCustomer }) => {
     };
 
     if (id) {
-      const expectedUrl = `${process.env.FRONT_URL}/customer/edit?id=${id}`;
+      const expectedUrl = `/customer/edit?id=${id}`;
       const currentUrl = window.location.href;
 
       if (currentUrl !== expectedUrl) {
@@ -39,11 +39,24 @@ const CustomerEdit: React.FC<Props> = ({ initialCustomer }) => {
     if (id && !initialCustomer) {
       fetchCustomer();
     }
-  }, [id, initialCustomer, router]);
+  }, [id, initialCustomer]);
 
   const handleSave = async () => {
-    // TODO: エンドポイントが作成されたら実装する
-    console.log('保存は実行されました')
+    try {
+      // 後でバックエンドを修正してからここも修正
+      const response = await fetch(`${process.env.API_URL}/customer/` + id, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(customer),
+      });
+      const data = await response.json();
+      console.log(data);
+      router.push(`/customer/detail?id=${id}`);
+    } catch (error) {
+      console.error('Error updating customer: ', error);
+    }
   }
 
   return (
@@ -57,46 +70,46 @@ const CustomerEdit: React.FC<Props> = ({ initialCustomer }) => {
         <h1 className="text-lg font-semibold text-center my-5">
           {customer.name}
         </h1>
-        <form className="flex flex-col px-6">
+        <form id='customerForm' className="flex flex-col px-6">
         <div className="flex items-center pb-4">
           <label className="w-40 flex-shrink-0 "htmlFor="customerName">取引先名</label>
-          <input className="my-2 border flex-grow" type="text" id="customerName" value={customer.name} />
+          <input className="my-2 border flex-grow" type="text" id="customerName" defaultValue={customer.name} />
         </div>
         <div className="flex items-center pb-4">
           <label className="w-40 flex-shrink-0" htmlFor="customerPhone">電話番号</label>
-          <input className="my-2 border flex-grow" type="text" id="customerPhone" value={customer.phone}/>
+          <input className="my-2 border flex-grow" type="text" id="customerPhone" defaultValue={customer.phone}/>
         </div>
         <div className='flex items-center pb-4'>
           <label className="w-40 flex-shrink-0" htmlFor="customerBillingPostalCode">郵便番号(請求先)</label>
-          <input className="my-2 border flex-grow" type="text" id="customerBillingPostalCode" value={customer.billingPostalCode}/>
+          <input className="my-2 border flex-grow" type="text" id="customerBillingPostalCode" defaultValue={customer.billingPostalCode}/>
         </div>
         <div className="flex items-center pb-4">
           <label className="w-40 flex-shrink-0" htmlFor="customerBillingState">都道府県(請求先)</label>
-          <input className="my-2 border flex-grow" type="text" id="customerBillingState" value={customer.billingState}/>
+          <input className="my-2 border flex-grow" type="text" id="customerBillingState" defaultValue={customer.billingState}/>
         </div>
         <div className="flex items-center pb-4">
           <label className="w-40 flex-shrink-0" htmlFor="customerBillingCity">市区町村(請求先)</label>
-          <input className="my-2 border flex-grow" type="text" id="customerBillingCity" value={customer.billingCity}/>
+          <input className="my-2 border flex-grow" type="text" id="customerBillingCity" defaultValue={customer.billingCity}/>
         </div>
         <div className="flex items-center pb-4">
           <label className="w-40 flex-shrink-0" htmlFor="customerBillingStreet">番地その他(請求先)</label>
-          <input className="my-2 border flex-grow" type="text" id="customerBillingStreet" value={customer.billingStreet}/>
+          <input className="my-2 border flex-grow" type="text" id="customerBillingStreet" defaultValue={customer.billingStreet}/>
         </div>
         <div className="flex items-center pb-4">
           <label className="w-40 flex-shrink-0" htmlFor="customerShippingPostalCode">郵便番号(納品先)</label>
-          <input className="my-2 border flex-grow" type="text" id="customerShippingPostalCode" value={customer.shippingPostalCode}/>
+          <input className="my-2 border flex-grow" type="text" id="customerShippingPostalCode" defaultValue={customer.shippingPostalCode}/>
         </div>
         <div className="flex items-center pb-4">
           <label className="w-40 flex-shrink-0" htmlFor="customerShippingState">都道府県(納品先)</label>
-          <input className="my-2 border flex-grow" type="text" id="customerShippingState" value={customer.shippingState}/>
+          <input className="my-2 border flex-grow" type="text" id="customerShippingState" defaultValue={customer.shippingState}/>
         </div>
         <div className="flex items-center pb-4">
           <label className="w-40 flex-shrink-0" htmlFor="customerShippingCity">市区町村(納品先)</label>
-          <input className="my-2 border flex-grow" type="text" id="customerShippingCity" value={customer.shippingCity}/>
+          <input className="my-2 border flex-grow" type="text" id="customerShippingCity" defaultValue={customer.shippingCity}/>
         </div>
         <div className="flex items-center pb-4">
           <label className="w-40 flex-shrink-0" htmlFor="customerShippingStreet">番地その他(納品先)</label>
-          <input className="my-2 border flex-grow" type="text" id="customerShippingStreet" value={customer.shippingStreet}/>
+          <input className="my-2 border flex-grow" type="text" id="customerShippingStreet" defaultValue={customer.shippingStreet}/>
         </div>
       </form>
       <Link href={`/customer/detail?id=${id}`}>
