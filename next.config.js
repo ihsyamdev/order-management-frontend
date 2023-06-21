@@ -2,7 +2,6 @@ require('dotenv').config();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-
   async headers() {
     return [
       {
@@ -14,9 +13,17 @@ const nextConfig = {
           },
         ],
       },
+      {
+        source: '/login',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: process.env.FRONT_URL,
+          }
+        ]
+      }
     ];
-  },
-
+  }
 }
 
 // module.exports = nextConfig
