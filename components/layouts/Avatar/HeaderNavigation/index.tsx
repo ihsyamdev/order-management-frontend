@@ -1,7 +1,7 @@
 import { FC } from "react"
-import { Logo } from "@/components/atoms/Logo"
-import { Avatar } from "@/components/atoms/Avatar"
-import { NavigationLink } from "@/components/atoms/NavigationLink"
+import { Logo } from "@/components/layouts/Logo"
+import { Avatar } from "@/components/layouts/Avatar"
+import { NavigationLink } from "@/components/common/NavigationLink"
 
 export const HeaderNavigation: FC = () => {
   return (

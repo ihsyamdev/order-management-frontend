@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { DefaultLayout } from '@/components/templates/DefaultLayout';
+import { DefaultLayout } from '@/components/layouts/DefaultLayout';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { Customer } from '@/types';

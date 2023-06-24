@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react"
-import { Header } from "@/components/organisms/Header"
-import { Sidebar } from "@/components/organisms/Sidebar"
+import { Header } from "@/components/layouts/Header"
+import { Sidebar } from "@/components/layouts/Sidebar"
 import styles from "./styles.module.css"
 
 type LayoutProps = {

@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
 import { Inter } from 'next/font/google'
-import { DefaultLayout } from '@/components/templates/DefaultLayout'
-import CustomerSearchForm from '@/components/organisms/CustomerSearchForm'
-import CustomerTable from '@/components/molecules/CustomerTable'
+import { DefaultLayout } from '@/components/layouts/DefaultLayout'
+import CustomerSearchForm from '@/components/customer/CustomerSearchForm'
+import CustomerTable from '@/components/customer/CustomerTable'
 import { Customer } from '@/types'
 
 const inter = Inter({ subsets: ['latin'] })

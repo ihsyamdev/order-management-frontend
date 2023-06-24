@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Head from 'next/head'
 import { Inter } from 'next/font/google'
-import { DefaultLayout } from '@/components/templates/DefaultLayout'
+import { DefaultLayout } from '@/components/layouts/DefaultLayout'
 
 const inter = Inter({ subsets: ['latin'] })
 

@@ -1,4 +1,4 @@
-import { ToggleMenu } from "@/components/molecules/ToggleMenu"
+import { ToggleMenu } from "@/components/layouts/ToggleMenu"
 import { FC, useState, useEffect } from "react"
 import styles from "./styles.module.css"
 

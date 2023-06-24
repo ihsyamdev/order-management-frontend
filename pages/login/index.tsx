@@ -44,7 +44,7 @@
 // }
 import { useState } from 'react'
 import cookie from 'js-cookie'
-import LoginForm from '@/components/molecules/LoginForm'
+import LoginForm from '@/components/auth/LoginForm'
 
 const Login = () => {
   const [accessToken, setAccessToken] = useState('')

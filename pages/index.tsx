@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import LoginForm from '../components/molecules/LoginForm';
+import LoginForm from '../components/auth/LoginForm';
 import cookie from 'js-cookie';
-import { DefaultLayout } from '@/components/templates/DefaultLayout';
+import { DefaultLayout } from '@/components/layouts/DefaultLayout';
 
 const Home = () => {
   return (
