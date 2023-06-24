@@ -21,6 +21,13 @@ const nextConfig = {
             value: process.env.FRONT_URL,
           }
         ]
+      },
+      {
+        source: '/fonts/(.*)',
+        headers: [
+          {key: 'Access-Control-Allow-Origin',
+          value: 'https://fonts.googleapis.com/'}
+        ]
       }
     ];
   }

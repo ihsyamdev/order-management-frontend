@@ -45,9 +45,11 @@ const CustomerList: React.FC = () => {
       <title>取引先一覧</title>  
     </Head>
     <DefaultLayout>
-      <h1 className="m-2 text-xl">取引先一覧</h1>
-      <CustomerSearchForm onSearch={handleSearch} />
-      <CustomerTable customers={customers} />
+      <div className="m-2">
+        <h1 className="m-2 text-xl font-bold">取引先一覧</h1>
+        <CustomerSearchForm onSearch={handleSearch} />
+        <CustomerTable customers={customers} />
+      </div>
     </DefaultLayout>
     </>
   )

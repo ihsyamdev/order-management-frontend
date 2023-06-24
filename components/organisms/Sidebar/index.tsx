@@ -1,5 +1,6 @@
 import { ToggleMenu } from "@/components/molecules/ToggleMenu"
 import { FC, useState, useEffect } from "react"
+import styles from "./styles.module.css"
 
 interface MenuItem {
   label: string;
@@ -12,7 +13,7 @@ interface SubMenuItem {
   link: string
 }
 
-const items: MenuItem[] = [
+export const items: MenuItem[] = [
   {
     label: '取引先',
     items: [
@@ -84,7 +85,7 @@ export const Sidebar: FC = () => {
   };
 
   return (
-    <div className="bg-gray-800 text-white w-40 h-screen">
+    <div className={styles.sidebar}>
       {items.map(({ label, items }, index) => (
         <ToggleMenu
           key={label}
@@ -97,3 +98,4 @@ export const Sidebar: FC = () => {
     </div>
   );
 };
+

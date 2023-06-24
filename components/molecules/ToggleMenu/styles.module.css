@@ -1,0 +1,18 @@
+/* p-2 text-white font-semibold text-base ${hoveredIndex === item.index? "bg-blue-200" : "bg-gray-700"}` */
+.menu{
+  padding-left: 5px;
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.submenu{
+  padding-left: 15px;
+  /* padding-top: 10px; */
+  padding-bottom: 10px;
+  font-size: 16px;
+}
+
+.hoveredSubmenu{
+  background-color: gray;
+}

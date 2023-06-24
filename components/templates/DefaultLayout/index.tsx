@@ -1,6 +1,7 @@
 import { FC, ReactNode } from "react"
 import { Header } from "@/components/organisms/Header"
 import { Sidebar } from "@/components/organisms/Sidebar"
+import styles from "./styles.module.css"
 
 type LayoutProps = {
   children: ReactNode
@@ -12,7 +13,7 @@ export const DefaultLayout: FC<LayoutProps> = ({ children }) => {
       <Header />
       <div className="flex">
         <Sidebar />
-        <main>{children}</main>
+        <main className={styles.main}>{children}</main>
       </div>
     </>
   )

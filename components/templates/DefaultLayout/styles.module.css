@@ -1,0 +1,8 @@
+.main {
+  flex-grow: 1;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-top: 60px; /* ヘッダーの高さに合わせた適切な値に修正してください */
+  padding-left: 150px; /* サイドバーの幅に合わせた適切な値に修正してください */
+  overflow-y: auto;
+}

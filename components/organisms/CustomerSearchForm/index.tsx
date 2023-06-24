@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import styles from './styles.module.css'
 
 interface CustomerSearchFormProps {
   onSearch: (searchQuery: string) => void
@@ -18,8 +19,15 @@ const CustomerSearchForm: React.FC<CustomerSearchFormProps> = ({ onSearch }) => 
 
   return (
     <form onSubmit={handleSearchSubmit}>
-      <input className="border-2 border-gray-500 rounded-md px-2 mx-5 w-60" type="text" value={searchQuery} onChange={handleSearchChange} placeholder="社名を入力してください" />
-      <button className="border-2 border-gray-300 rounded-md bg-blue-100 px-2" type="submit">検索</button>
+      <input 
+        className={styles.searchBar}
+        type="text" value={searchQuery}
+        onChange={handleSearchChange}
+        placeholder="社名を入力してください" />
+      <button
+        className={styles.searchButton}
+        type="submit">検索
+      </button>
     </form>
   )
 }

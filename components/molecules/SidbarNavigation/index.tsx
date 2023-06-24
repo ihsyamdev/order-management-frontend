@@ -3,7 +3,7 @@ import { NavigationLink } from "@/components/atoms/NavigationLink"
 
 export const SidebarNavigation: FC = () => {
   return (
-    <nav className="bg-black text-white">
+    <nav>
       <ul>
         <li>
           取引先
