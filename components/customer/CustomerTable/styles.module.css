@@ -1,0 +1,31 @@
+.table{
+  margin-top: 10px;
+}
+
+/* trの偶数行 */
+.table tr:nth-child(even){
+  background-color: whitesmoke;
+}
+
+/* trへのマウスオーバー */
+.table tr:hover td {
+  background-color: rgb(217, 243, 242);
+}
+
+.header{
+  font-weight: bold;
+  color: teal;
+  border-bottom: 1px solid darkgray;
+}
+
+.headerField{
+  width: 200px;
+}
+
+.record{
+  font-size: 14px;
+  text-align: center;
+  text-indent: 1em;
+  letter-spacing: 1px;
+  border-bottom: 1px solid darkgray;
+}
