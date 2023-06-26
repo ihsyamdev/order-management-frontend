@@ -3,12 +3,12 @@ import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import { DefaultLayout } from '@/components/layouts/DefaultLayout'
 import CustomerSearchForm from '@/components/customer/CustomerSearchForm'
-import CustomerTable from '@/components/customer/CustomerTable'
+import CustomerList from '@/components/customer/CustomerList'
 import { Customer } from '@/types'
 
 const inter = Inter({ subsets: ['latin'] })
 
-const CustomerList: React.FC = () => {
+const CustomerListPage: React.FC = () => {
   const [customers, setCustomers] = useState<Customer[]>([])
 
   const fetchCustomers = async (accountName: string) => {
@@ -48,7 +48,7 @@ const CustomerList: React.FC = () => {
       <div className="m-2">
         <h1 className="m-2 text-xl font-bold">取引先一覧</h1>
         <CustomerSearchForm onSearch={handleSearch} />
-        <CustomerTable customers={customers} />
+        <CustomerList customers={customers} />
       </div>
     </DefaultLayout>
     </>
@@ -56,4 +56,4 @@ const CustomerList: React.FC = () => {
 
 }
 
-export default CustomerList
+export default CustomerListPage
