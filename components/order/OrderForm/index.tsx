@@ -1,25 +1,4 @@
-import { useState } from 'react'
 import styles from './styles.module.css'
-import axios from 'axios'
-import OrderDetailList from '../OrderDetailList'
-import { OrderDetail } from '@/types/order'
-
-const orderDetailsSample: Partial<OrderDetail>[] = [
-  {
-    id: 'A001',
-    name: '商品A',
-    unitPrice: 1000,
-    quantity: 1,
-    taxRate: 10,
-  },
-  {
-    id: 'A002',
-    name: '商品B',
-    unitPrice: 2000,
-    quantity: 2,
-    taxRate: 10,
-  }
-]
 
 const OrderForm: React.FC = () => {
   return (
@@ -51,11 +30,7 @@ const OrderForm: React.FC = () => {
           <input id='approvalStatusInput' className={styles.formInput} type='text' disabled={true}/>
         </div>
       </form>
-
-      <OrderDetailList orderDetails={orderDetailsSample}/>
-
     </>
-
   )
 }
 

@@ -11,23 +11,39 @@ const OrderDetailList: React.FC<OrderDetailListProps> = ({ orderDetails }) => {
     <table className={styles.table}>
       <thead className={styles.header}>
         <tr>
+          <th className={styles.headerField}>選択</th>
           <th className={styles.headerField}>商品</th>
           <th className={styles.headerField}>単価</th>
           <th className={styles.headerField}>数量</th>
           <th className={styles.headerField}>小計</th>
           <th className={styles.headerField}>消費税率</th>
-          <th className={styles.headerField}></th>
         </tr>
       </thead>
       <tbody>
         {orderDetails.map((orderDetail: Partial<OrderDetail>) => (
           <tr className={styles.record} key={orderDetail.id}>
-            <td className={styles.recordField}>{orderDetail.name}</td>
-            <td className={styles.recordField}>{orderDetail.unitPrice}円</td>
-            <td className={styles.recordField}>{orderDetail.quantity}個</td>
-            <td className={styles.recordField}>{`${orderDetail.unitPrice * orderDetail.quantity}円`}</td>
-            <td className={styles.recordField}>{orderDetail.taxRate}%</td>
-            <td className={styles.recordField}><button className={styles.deleteButton}>削除</button></td>
+            <td className={styles.recordField}>
+              <input type='checkbox'/>
+            </td>
+            <td className={styles.recordField}>
+              <input type='text' defaultValue={orderDetail.name}/>
+            </td>
+            <td className={styles.recordField}>
+              <input type='text' defaultValue={`${orderDetail.unitPrice}`}/>
+              <span>円</span>
+            </td>
+            <td className={styles.recordField}>
+              <input type='text' defaultValue={`${orderDetail.quantity}`}/>
+              <span>個</span>
+            </td>
+            <td className={styles.recordField}>
+              <input type='text' defaultValue={`${orderDetail.unitPrice * orderDetail.quantity}`}/>
+              <span>円</span>
+            </td>
+            <td className={styles.recordField}>
+              <input type='text' defaultValue={`${orderDetail.taxRate}`}/>
+              <span>%</span>
+            </td>
           </tr>
         ))}
       </tbody>
