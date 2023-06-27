@@ -55,7 +55,7 @@ export const items: MenuItem[] = [
       {
         index: 5,
         label: '新規申請',
-        link: '/order'
+        link: '/order/new'
       }
     ]
   }
