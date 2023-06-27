@@ -30,6 +30,11 @@ const CustomerEditPage: React.FC = () => {
     // TODO: Formのデータを使ってPATCH
     console.log('CustomerEditPage: handleSaveが起動しました')
     console.log(customer)
+    router.push(`/customer/${customerId}`)
+  }
+
+  const handleCancel = () => {
+    router.push(`/customer/${customerId}`)
   }
 
   const handleFormSubmit = (updatedCustomer: Partial<Customer>) => {
@@ -44,7 +49,7 @@ const CustomerEditPage: React.FC = () => {
       <DefaultLayout>
         <h1 className="p-6 text-xl font-bold">取引先編集</h1>
         <SaveButton onClick={handleSave}/>
-        <CancelButton />
+        <CancelButton onClick={handleCancel}/>
         <CustomerForm onBlur={handleFormSubmit} customer={customer}/>
       </DefaultLayout>
     </div>
