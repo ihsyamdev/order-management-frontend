@@ -1,5 +1,7 @@
 .table{
   margin-top: 10px;
+  position: relative;
+  top: 30px;
 }
 
 /* trの偶数行 */
@@ -8,7 +10,7 @@
 }
 
 /* trへのマウスオーバー */
-.table tr:hover td {
+.table tr:hover td{
   background-color: rgb(217, 243, 242);
 }
 
@@ -23,9 +25,20 @@
 }
 
 .record{
+  height: 40px;
+}
+
+.recordField{
   font-size: 14px;
   text-align: center;
   text-indent: 1em;
   letter-spacing: 1px;
   border-bottom: 1px solid darkgray;
+}
+
+.deleteButton{
+  color: crimson;
+  font-weight: bold;
+  display: grid;
+  place-items: center;
 }
