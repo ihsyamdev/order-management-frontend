@@ -28,7 +28,6 @@ const CustomerNewPage: React.FC = () => {
       <DefaultLayout>
         <h1 className='p-6 text-xl font-bold'>新規取引先の登録</h1>
         <SaveButton onClick={handleSave}/>
-        <CancelButton />
         <CustomerForm onBlur={handleFormSubmit}/>
       </DefaultLayout>
     </>
