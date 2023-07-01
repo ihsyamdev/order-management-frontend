@@ -11,7 +11,11 @@ const OrderForm: React.FC = () => {
         </div>
         <div id='orderDate' className={styles.formDiv}>
           <label htmlFor='orderDateInput' className={styles.formLabel}>受注日</label>
-          <input id='orderDateInput' className={styles.formInput} type='date'/>
+          <input
+            id='orderDateInput'
+            className={styles.formInput}
+            type='date'
+            defaultValue={new Date().toISOString().split('T')[0]}/>
         </div>
         <div id='totalAmountWithoutTax' className={styles.formDiv}>
           <label htmlFor='totalAmountWithoutTaxInput' className={styles.formLabel}>受注総額(税別)</label>
