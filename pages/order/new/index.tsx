@@ -7,6 +7,7 @@ import DetailAddButton from '@/components/order/DetailAddButton'
 import DetailRemoveButton from '@/components/order/DetailRemoveButton'
 import OrderDetailList from '@/components/order/OrderDetailList'
 import { OrderDetail } from '@/types/order'
+import OrderSubmitButton from '@/components/order/OrderSubmitButton'
 
 
 export default function Order() {
@@ -50,6 +51,7 @@ export default function Order() {
       <DefaultLayout>
         <h1 className='p-6 text-xl font-bold'>新規受注の登録</h1>
         <DraftSaveButton />
+        <OrderSubmitButton />
         <OrderForm />
         <DetailAddButton handleClick={handleClick} />
         <DetailRemoveButton />
