@@ -13,6 +13,7 @@ import OrderSubmitButton from '@/components/order/OrderSubmitButton'
 
 const NewOrderPage = () => {
 
+  // TODO: 後でAPIから取得するようにする
   const [orderDetails, setOrderDetails] = useState<Partial<OrderDetailWithChecked>[]>([
     {
       id: "A001",
@@ -31,11 +32,19 @@ const NewOrderPage = () => {
       quantity: 2,
       taxRate: 10,
       checked: false
+    },
+    {
+      id: "A003",
+      name: '商品C',
+      rowNumber: 3,
+      unitPrice: 3000,
+      quantity: 3,
+      taxRate: 10,
+      checked: false
     }
   ])
 
-  const [deleteOrderDetails, setDeleteOrderDetails] = useState<Partial<OrderDetailWithChecked>[]>([])
-
+  // 追加ボタンを押したら空のレコードを追加
   const clickAddDetail = () => {
     setOrderDetails([
       ...orderDetails,
@@ -48,30 +57,25 @@ const NewOrderPage = () => {
         taxRate: 0
       }
     ])
-    console.log(orderDetails)
   }
 
-  const clickRemoveDetail = () => {
-    
-  }
-
-  const handleCheckboxChange = (orderDetailId: string) => {
-    const updatedOrderDetails = orderDetails.map((orderDetail) => {
-      if (orderDetail.id === orderDetailId) {
-        console.log(orderDetail)
-        // return {
-        //   ...orderDetail, checked: !orderDetail.checked
-        // }
+  // チェックボックスをクリックしたらチェック状態を反転させる
+  const handleCheckboxChange = (rowNumber: number) => {
+    orderDetails.map(row => {
+      if (row.rowNumber === rowNumber) {
+        row.checked = !row.checked
       }
     })
-    // setOrderDetails(updatedOrderDetails)
   }
 
+  // 削除ボタンを押したらチェックされたレコードを削除
   const handleRemoveButtonClick = () => {
-    const updatedOrderDetails = orderDetails.filter((orderDetail) => {
-      return orderDetail.checked === false
+    const deletedOrderDetails = orderDetails.filter(row => row.checked === false)
+    const newOrderDetails = deletedOrderDetails.map((item, index) => {
+      item.rowNumber = index + 1
+      return item
     })
-    console.log(updatedOrderDetails)
+    setOrderDetails(newOrderDetails)
   }
 
   return (

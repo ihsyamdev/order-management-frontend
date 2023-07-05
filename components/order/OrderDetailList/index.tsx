@@ -7,14 +7,13 @@ export interface OrderDetailWithChecked extends OrderDetail {
 
 interface OrderDetailListProps {
   orderDetails: Partial<OrderDetailWithChecked>[]
-  onCheckboxChange?: (orderDetailId: string) => void
+  onCheckboxChange?: (rowNumber: number) => void
 }
 
 const OrderDetailList: React.FC<OrderDetailListProps> = ({ orderDetails, onCheckboxChange }) => {
 
-  const handleCheckboxChange = (orderDetailId: string) => {
-    // console.log(orderDetailId)
-    onCheckboxChange(orderDetailId)
+  const handleCheckboxChange = (rowNumber: number) => {
+    onCheckboxChange(rowNumber)
   }
 
   return (
@@ -32,10 +31,10 @@ const OrderDetailList: React.FC<OrderDetailListProps> = ({ orderDetails, onCheck
       </thead>
       <tbody>
         {orderDetails.map((orderDetail: Partial<OrderDetailWithChecked>) => (
-          <tr className={styles.record} key={orderDetail.id}>
+          <tr className={styles.record} key={orderDetail.rowNumber}>
             <td className={styles.recordField}>
               <input type='checkbox'
-                onChange={() => handleCheckboxChange(orderDetail.id)}
+                onChange={() => handleCheckboxChange(orderDetail.rowNumber)}
               />
             </td>
             <td className={styles.recordField}>

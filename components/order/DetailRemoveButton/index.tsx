@@ -1,8 +1,22 @@
 import styles from './styles.module.css'
 
-const DetailRemoveButton = () => {
+export interface OrderDetailRemoveButtonProps {
+  handleClick: () => void
+}
+
+const DetailRemoveButton = ({handleClick}) => {
+
+  const onClick = () => {
+    handleClick()
+  }
+
   return (
-    <button className={styles.button}>商品を削除</button>
+    <button 
+      className={styles.button}
+      onClick={onClick}
+    >
+      商品を削除
+    </button>
   )
 }
 
