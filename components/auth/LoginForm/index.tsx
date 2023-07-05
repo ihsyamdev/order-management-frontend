@@ -17,8 +17,8 @@ const LoginForm = ({ onLogin }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type='text' value={username} onChange={handleUsernameChange} />
-      <input type='password' value={password} onChange={handlePasswordChange} />
+      <input className='border' type='text' value={username} onChange={handleUsernameChange} />
+      <input className='border' type='password' value={password} onChange={handlePasswordChange} />
     </form>
   )
 }
