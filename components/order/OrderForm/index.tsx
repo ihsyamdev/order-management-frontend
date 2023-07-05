@@ -2,7 +2,7 @@ import styles from './styles.module.css'
 import { Order } from '@/types/order'
 
 export interface OrderFormProps {
-  order: Partial<Order>
+  order?: Partial<Order>
   disabled?: boolean | false
 }
 
@@ -16,7 +16,7 @@ const OrderForm: React.FC<OrderFormProps> = ({order, disabled}) => {
             id='customerInput'
             className={styles.formInput}
             type='text'
-            defaultValue={disabled? `${order.customer}`: ''}
+            defaultValue={order? `${order.customer}`: ''}
             disabled={disabled}
           />
           <button id='customerSearchButton' className={styles.searchButton}>検索</button>
@@ -27,7 +27,7 @@ const OrderForm: React.FC<OrderFormProps> = ({order, disabled}) => {
             id='orderDateInput'
             className={styles.formInput}
             type='date'
-            defaultValue={disabled ? `${order.submitDate?.toISOString().split('T')[0]}`: `${new Date().toISOString().split('T')[0]}`}
+            defaultValue={order ? `${order.submitDate?.toISOString().split('T')[0]}`: `${new Date().toISOString().split('T')[0]}`}
             disabled={disabled}
           />
         </div>
@@ -37,7 +37,7 @@ const OrderForm: React.FC<OrderFormProps> = ({order, disabled}) => {
             id='totalAmountWithoutTaxInput'
             className={styles.formInput}
             type='number'
-            value={disabled? `${order.totalAmountWithoutTax}`: 0}
+            value={order? `${order.totalAmountWithoutTax}`: 0}
             disabled={disabled}
           />
         </div>
@@ -47,7 +47,7 @@ const OrderForm: React.FC<OrderFormProps> = ({order, disabled}) => {
             id='totalAmountWithTax'
             className={styles.formInput}
             type='number'
-            value={disabled? `${order.totalAmountWithTax}`: 0}
+            value={order? `${order.totalAmountWithTax}`: 0}
             disabled={disabled}
           />
         </div>
@@ -58,7 +58,7 @@ const OrderForm: React.FC<OrderFormProps> = ({order, disabled}) => {
             className={`${styles.formInput}
             ${styles.formInputShort}`}
             type='checkbox'
-            defaultChecked={disabled? `${order.draft}`: false}
+            defaultChecked={order? `${order.draft}`: false}
             disabled={true}
           />
         </div>
@@ -68,7 +68,7 @@ const OrderForm: React.FC<OrderFormProps> = ({order, disabled}) => {
             id='approvalStatusInput'
             className={styles.formInput}
             type='text'
-            value={disabled? `${order.approvalStage}`: ''}
+            value={order? `${order.approvalStage}`: ''}
             disabled={true}
           />
         </div>
