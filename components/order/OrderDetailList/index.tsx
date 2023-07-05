@@ -1,17 +1,28 @@
-import Link from 'next/link'
 import styles from './styles.module.css'
 import { OrderDetail } from '@/types/order'
 
-interface OrderDetailListProps {
-  orderDetails: Partial<OrderDetail>[]
+export interface OrderDetailWithChecked extends OrderDetail {
+  checked: boolean
 }
 
-const OrderDetailList: React.FC<OrderDetailListProps> = ({ orderDetails }) => {
+interface OrderDetailListProps {
+  orderDetails: Partial<OrderDetailWithChecked>[]
+  onCheckboxChange?: (orderDetailId: string) => void
+}
+
+const OrderDetailList: React.FC<OrderDetailListProps> = ({ orderDetails, onCheckboxChange }) => {
+
+  const handleCheckboxChange = (orderDetailId: string) => {
+    // console.log(orderDetailId)
+    onCheckboxChange(orderDetailId)
+  }
+
   return (
     <table className={styles.table}>
       <thead className={styles.header}>
         <tr>
           <th className={styles.headerField}>選択</th>
+          <th className={styles.headerField}>行番号</th>
           <th className={styles.headerField}>商品</th>
           <th className={styles.headerField}>単価</th>
           <th className={styles.headerField}>数量</th>
@@ -20,10 +31,15 @@ const OrderDetailList: React.FC<OrderDetailListProps> = ({ orderDetails }) => {
         </tr>
       </thead>
       <tbody>
-        {orderDetails.map((orderDetail: Partial<OrderDetail>) => (
+        {orderDetails.map((orderDetail: Partial<OrderDetailWithChecked>) => (
           <tr className={styles.record} key={orderDetail.id}>
             <td className={styles.recordField}>
-              <input type='checkbox'/>
+              <input type='checkbox'
+                onChange={() => handleCheckboxChange(orderDetail.id)}
+              />
+            </td>
+            <td className={styles.recordField}>
+              <input type='number' defaultValue={orderDetail.rowNumber} disabled/>
             </td>
             <td className={styles.recordField}>
               <input type='text' defaultValue={orderDetail.name}/>
