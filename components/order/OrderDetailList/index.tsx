@@ -7,10 +7,11 @@ export interface OrderDetailWithChecked extends OrderDetail {
 
 interface OrderDetailListProps {
   orderDetails: Partial<OrderDetailWithChecked>[]
+  disabled?: boolean | false
   onCheckboxChange?: (rowNumber: number) => void
 }
 
-const OrderDetailList: React.FC<OrderDetailListProps> = ({ orderDetails, onCheckboxChange }) => {
+const OrderDetailList: React.FC<OrderDetailListProps> = ({ orderDetails, disabled, onCheckboxChange }) => {
 
   const handleCheckboxChange = (rowNumber: number) => {
     onCheckboxChange(rowNumber)
@@ -33,30 +34,56 @@ const OrderDetailList: React.FC<OrderDetailListProps> = ({ orderDetails, onCheck
         {orderDetails.map((orderDetail: Partial<OrderDetailWithChecked>) => (
           <tr className={styles.record} key={orderDetail.rowNumber}>
             <td className={styles.recordField}>
-              <input type='checkbox'
+              <input 
+                type='checkbox'
                 onChange={() => handleCheckboxChange(orderDetail.rowNumber)}
+                disabled={disabled}
               />
             </td>
             <td className={styles.recordField}>
-              <input type='number' defaultValue={orderDetail.rowNumber} disabled/>
+              <input
+                type='number'
+                defaultValue={orderDetail.rowNumber}
+                disabled={true}
+              />
             </td>
             <td className={styles.recordField}>
-              <input type='text' defaultValue={orderDetail.name}/>
+              <input
+                type='text'
+                defaultValue={orderDetail.name}
+                disabled={disabled}
+              />
             </td>
             <td className={styles.recordField}>
-              <input type='text' defaultValue={`${orderDetail.unitPrice}`}/>
+              <input
+                type='text'
+                defaultValue={`${orderDetail.unitPrice}`}
+                disabled={disabled}
+              />
               <span>円</span>
             </td>
             <td className={styles.recordField}>
-              <input type='text' defaultValue={`${orderDetail.quantity}`}/>
+              <input
+                type='text'
+                defaultValue={`${orderDetail.quantity}`}
+                disabled={disabled}
+              />
               <span>個</span>
             </td>
             <td className={styles.recordField}>
-              <input type='text' defaultValue={`${orderDetail.unitPrice * orderDetail.quantity}`}/>
+              <input
+                type='text'
+                defaultValue={`${orderDetail.unitPrice * orderDetail.quantity}`}
+                disabled={disabled}
+              />
               <span>円</span>
             </td>
             <td className={styles.recordField}>
-              <input type='text' defaultValue={`${orderDetail.taxRate}`}/>
+              <input
+                type='text'
+                defaultValue={`${orderDetail.taxRate}`}
+                disabled={disabled}
+              />
               <span>%</span>
             </td>
           </tr>

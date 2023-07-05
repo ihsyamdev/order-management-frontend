@@ -68,7 +68,7 @@ const OrderDetailPage = () => {
         <h1 className='p-6 text-xl font-bold'>受注照会</h1>
         <EditButton url='http://localhost:4000/order/ABC/edit' />
         <OrderForm order={order} disabled={true}/>
-        <OrderDetailList orderDetails={orderDetails}/>
+        <OrderDetailList orderDetails={orderDetails} disabled={true}/>
       </DefaultLayout>
     </>
   )
