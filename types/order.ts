@@ -7,3 +7,17 @@ export interface OrderDetail {
   quantity: number
   taxRate: number
 }
+
+export interface Order {
+  id: string
+  shortId: string
+  sequense: number
+  customer: string
+  totalAmountWithoutTax: number,
+  totalAmountWithTax: number,
+  submitter: string
+  submitDate: Date
+  approver: string
+  draft: boolean
+  approvalStage: string
+}
