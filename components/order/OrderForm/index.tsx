@@ -37,7 +37,7 @@ const OrderForm: React.FC<OrderFormProps> = ({order, disabled}) => {
             id='totalAmountWithoutTaxInput'
             className={styles.formInput}
             type='number'
-            value={order? `${order.totalAmountWithoutTax}`: 0}
+            defaultValue={order? `${order.totalAmountWithoutTax}`: 0}
             disabled={disabled}
           />
         </div>
@@ -47,7 +47,7 @@ const OrderForm: React.FC<OrderFormProps> = ({order, disabled}) => {
             id='totalAmountWithTax'
             className={styles.formInput}
             type='number'
-            value={order? `${order.totalAmountWithTax}`: 0}
+            defaultValue={order? `${order.totalAmountWithTax}`: 0}
             disabled={disabled}
           />
         </div>
@@ -68,7 +68,7 @@ const OrderForm: React.FC<OrderFormProps> = ({order, disabled}) => {
             id='approvalStatusInput'
             className={styles.formInput}
             type='text'
-            value={order? `${order.approvalStage}`: ''}
+            defaultValue={order? `${order.approvalStage}`: ''}
             disabled={true}
           />
         </div>
