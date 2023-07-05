@@ -1,3 +1,4 @@
+import SearchButton from '@/components/common/SearchButton'
 import styles from './styles.module.css'
 import { Order } from '@/types/order'
 
@@ -19,7 +20,7 @@ const OrderForm: React.FC<OrderFormProps> = ({order, disabled}) => {
             defaultValue={order? `${order.customer}`: ''}
             disabled={disabled}
           />
-          <button id='customerSearchButton' className={styles.searchButton}>検索</button>
+          {!disabled && <SearchButton />}
         </div>
         <div id='orderDate' className={styles.formDiv}>
           <label htmlFor='orderDateInput' className={styles.formLabel}>受注日</label>
